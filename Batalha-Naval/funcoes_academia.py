@@ -18,3 +18,18 @@ def define_posicoes(pos_linha, pos_coluna, orientacao, tamanho):
        i += 1
        j += 1
     return lista_resultado
+
+
+def preenche_frota(dicio_frota, navio, pos_linha, pos_coluna, orientacao, tamanho):
+   
+   pos_novo_navio = define_posicoes(pos_linha, pos_coluna, orientacao, tamanho)
+   
+   if dicio_frota != {}:
+    if navio not in dicio_frota.keys():
+       dicio_frota[navio] = []
+    temp = dicio_frota[navio]
+    temp.append(pos_novo_navio)
+    dicio_frota[navio] = temp
+   else:
+    dicio_frota[navio] = [pos_novo_navio]
+   return dicio_frota
