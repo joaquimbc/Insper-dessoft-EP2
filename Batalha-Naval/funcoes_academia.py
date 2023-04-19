@@ -14,7 +14,7 @@ def define_posicoes(pos_linha, pos_coluna, orientacao, tamanho):
     i = pos_coluna
     j = 1
     while j < tamanho:
-       lista_resultado.append(pos_linha, [i+1])
+       lista_resultado.append([pos_linha, i+1])
        i += 1
        j += 1
     return lista_resultado
