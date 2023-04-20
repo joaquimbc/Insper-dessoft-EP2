@@ -1,3 +1,13 @@
+def define_posicoes(pos_linha, pos_coluna, orientacao, tamanho):
+    lista_resultado = [[pos_linha, pos_coluna]]
+    if orientacao == 'vertical':
+        for i in range(1, tamanho):
+            lista_resultado.append([pos_linha+i, pos_coluna])
+    else:
+        for i in range(1, tamanho):
+            lista_resultado.append([pos_linha, pos_coluna+i])
+    return lista_resultado
+
 def preenche_frota(dicio_frota, navio, pos_linha, pos_coluna, orientacao, tamanho):
     lista_resultado = []
     
@@ -9,4 +19,5 @@ def preenche_frota(dicio_frota, navio, pos_linha, pos_coluna, orientacao, tamanh
             lista_resultado.append([pos_linha, i])
     
     return lista_resultado
+
 
