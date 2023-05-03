@@ -27,4 +27,17 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
 
+def afundados(frota, tabuleiro):
+    navios_afundados = 0
+    for tipo, posicoes in frota.items():
+        for navio in posicoes:
+            afundado = True
+            for posicao in navio:
+                if tabuleiro[posicao[0]][posicao[1]] != 'X':
+                    afundado = False
+                    
+            if afundado:
+                navios_afundados += 1
+    return navios_afundados
+
 
