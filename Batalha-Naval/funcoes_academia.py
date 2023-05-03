@@ -27,6 +27,24 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
 
+def gera_tabuleiro():
+    tabuleiro = []
+    for i in range(10):
+        tabuleiro.append([0]*10)
+    return tabuleiro
+
+def posiciona_frota(frota):
+    tabuleiro = gera_tabuleiro()
+    
+    for navio in frota:
+        posicoes = frota[navio]
+        for posicao in posicoes:
+            for linha in posicao:
+                tabuleiro[linha[0]][linha[1]] = 1
+    
+    return tabuleiro
+
+
 def afundados(frota, tabuleiro):
     navios_afundados = 0
     for tipo, posicoes in frota.items():
@@ -39,5 +57,7 @@ def afundados(frota, tabuleiro):
             if afundado:
                 navios_afundados += 1
     return navios_afundados
+
+
 
 
