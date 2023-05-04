@@ -77,5 +77,42 @@ def posicao_valida(dicio_navios, pos_linha, pos_coluna, orientacao, tamanho):
                         return False
     return True
 
+frota = {
+    "porta-aviões": [],
+    "navio-tanque": [],
+    "contratorpedeiro": [],
+    "submarino": [],
+}
+
+config_navios = {
+    "porta-aviões": {"tamanho": 4, "quantidade": 1},
+    "navio-tanque": {"tamanho": 3, "quantidade": 2},
+    "contratorpedeiro": {"tamanho": 2, "quantidade": 3},
+    "submarino": {"tamanho": 1, "quantidade": 4},
+}
+
+for navio, info in config_navios.items():
+    tamanho = info["tamanho"]
+    quantidade = info["quantidade"]
+    
+    for i in range(quantidade):
+        while True:
+            print(f"Insira as informações referentes ao navio {navio} que possui tamanho {tamanho}")
+            pos_linha = int(input("Linha: "))
+            pos_coluna = int(input("Coluna: "))
+            if tamanho > 1:
+                orientacao = int(input("[1] Vertical [2] Horizontal > "))
+                orientacao = 'vertical' if orientacao == 1 else 'horizontal'
+            else:
+                orientacao = 'vertical'
+
+            if posicao_valida(frota, pos_linha, pos_coluna, orientacao, tamanho):
+                posicoes = define_posicoes(pos_linha, pos_coluna, orientacao, tamanho)
+                frota[navio].append(posicoes)
+                break
+            else:
+                print("Esta posição não está válida!")
+
+print(frota)
 
 
